@@ -23,3 +23,14 @@ export function createCar(garage, car, callback) {
     payload: request
   };
 }
+
+export function deleteCar(car, history) {
+  fetch(`${ROOT_URL}cars/${car.id}`, { method: 'DELETE' })
+    .then(response => response.json())
+    .then(history.push(""));
+
+  return {
+    type: 'CAR_DELETED',
+    payload: car
+  };
+}
